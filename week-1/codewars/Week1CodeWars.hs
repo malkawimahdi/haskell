@@ -1,4 +1,4 @@
-import Distribution.Simple.Program.HcPkg (list)
+module Week1CodeWars where
 --greet is defined as a function that takes no arguements and returns a CONSTANT string called "Hello World".
 greet :: String
 greet = "hello world!"
