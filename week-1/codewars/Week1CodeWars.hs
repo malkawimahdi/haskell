@@ -7,7 +7,7 @@ greet = "hello world!"
 --The numbers can be negative or non-integer. 
 --If the array does not contain any numbers then you should return 0.
 sumCustom :: Num a => [a] -> a 
-sumCustom list = Prelude.sum (list)
+sumCustom  = Prelude.sum
 
 
 --Simple, remove the spaces from the string, then return the resultant string.
