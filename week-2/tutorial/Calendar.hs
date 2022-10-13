@@ -1,5 +1,4 @@
 module Calendar where
-import Data.Time.Calendar.Month (Month)
 
 -- In the Gregorian calendar, a year is a leap year if it is divisible by 4,
     -- except that centuaries are leap years only if divisble by 400.
@@ -24,3 +23,12 @@ daysInYear year
 data Month
     = January | February | March | April | May | June | July | August | September | October | November | December
     deriving (Show)
+
+daysInMonth :: Month -> Int -> Int
+daysInMonth month year
+    | isLeapYear year && show month == "February" = 29
+    | show month == "February" = 28
+    | show month == "April" = 30
+    | show month == "June" = 30
+    | show month == "September" = 30
+    | otherwise = 31
