@@ -24,6 +24,10 @@ data Month
     = January | February | March | April | May | June | July | August | September | October | November | December
     deriving (Show)
 
+
+-- daysInMonth returns the number of days in a monnth for a given year.
+-- For most months. the answer is the same whatever the year, however there is a special case.
+-- daysInMonth takes an enumarated type called Month and Int (year) and outputs the days in that month for a given year.  
 daysInMonth :: Month -> Int -> Int
 daysInMonth month year
     | isLeapYear year && show month == "February" = 29
