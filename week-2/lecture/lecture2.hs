@@ -38,3 +38,6 @@ primaryColour Green = True
 primaryColour Blue = True
 -- primaryColour anyOtherColour = False
 primaryColour _ = False
+
+-- Always write the most specific guards at the start, so that they execute before the general cases,
+    -- in which they might match to.  
