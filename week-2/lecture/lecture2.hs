@@ -3,9 +3,19 @@ module Lecture2 where
 square :: Integer -> Integer
 square number = number * number
 
+-- norm is a function that takes 2 Doubles and outputs a Double.
+-- Any negative input will become positive.  
 norm :: Double -> Double -> Double
 norm x y = sqrt (x*x + y*y)
 
+-- small function takes a single Int and outputs a Bool. 
+-- This function is able to conclude if a number is between 0 - 9,
+    -- outputting the corresponding boolean expression.  
+small :: Int -> Bool
+small number = 0 <= number && number < 10
+
+-- Haskell enumerated data type that corresponds to some basic colours.
+-- deriving (Show) allows it to be displayed within ghci.  
 data Colour
     = Red | Green | Blue | Yellow
     | Cyan | Magenta | Black | White
