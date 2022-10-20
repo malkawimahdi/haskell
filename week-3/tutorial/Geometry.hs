@@ -41,9 +41,9 @@ minusPoint (Point x1 y1) (Point x2 y2) = Point (x1 - x2) (y1 - y2)
 
 -- timesPoint takes two points are an arguement and returns a point.
 -- timesPoint will use the multiplication operation on each axis.
-    -- each component in the pair, is substituted for the local variables defined in the function. 
-timesPoint :: Point -> Point -> Point
-timesPoint (Point x1 y1) (Point x2 y2) = Point (x1 * x2) (y1 * y2)
+    -- each component in the pair, is substituted for the local variables defined in the function and multiplied by factor.
+timesPoint :: Int -> Point -> Point
+timesPoint factor (Point x1 y1) = Point (x1 * factor) (y1 * factor)
 
 -- normPoint computes the sum of the absolute values of the two componentes.
     -- This is called the Manhattan metic, becuase it represents the minimum distance,

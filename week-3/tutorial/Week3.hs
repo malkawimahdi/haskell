@@ -8,4 +8,3 @@ swap pair = (snd pair, fst pair)
 -- dup takes a single argument and returns a pair with two copies of the arguement.
 dup :: a -> (a, a)
 dup anything = (anything, anything)
-
