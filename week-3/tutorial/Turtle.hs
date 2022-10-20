@@ -31,6 +31,6 @@ data Command = TurnLeft | TurnRight | Steps Int | LiftPen | LowerPen
 action :: Turtle -> Command -> Turtle
 action (Turtle point direction turtlePen) TurnLeft = Turtle point (turnLeft direction) turtlePen
 action (Turtle point direction turtlePen) TurnRight = Turtle point (turnRight direction) turtlePen
-action (Turtle point direction turtlePen) steps = Turtle point (oneStep direction) turtlePen
-action (Turtle point direction turtlePen) LiftPen = Turtle point (turnRight direction) Up
-action (Turtle point direction turtlePen) LowerPen = Turtle point (turnRight direction) Down
+action (Turtle point direction turtlePen) (Steps numberOfSteps) = Turtle (plusPoint point (timesPoint numberOfSteps (oneStep direction))) direction turtlePen
+action (Turtle point direction turtlePen) LiftPen = Turtle point direction Up
+action (Turtle point direction turtlePen) LowerPen = Turtle point direction Down
