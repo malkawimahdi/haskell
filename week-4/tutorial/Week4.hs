@@ -62,5 +62,15 @@ isPalindrome string = reverse string == string
 isFamousPalindrome :: String -> Bool
 isFamousPalindrome string = isPalindrome (capitalizeLetters string)
 
--- frequency :: [Char] -> [(Char, Int)]
--- frequency char = group (sort char)
+-- frequency takes an ordered list of anything (that is the same type) and returns the occurances of each thing in the list.
+frequency :: Ord a => [a] -> [(a, Int)]
+frequency chars = [(head grouping, length grouping) | grouping <- group(sort chars)]
+
+-- palindromic :: [Char] -> Bool
+-- palindromic string
+--     | length temp > 1 = False
+--     | otherwise = True
+--         where temp = [char | (char, number) <- frequency string, odd number]
+
+palindromic :: [Char] -> Bool
+palindromic string =  length ([char | (char, number) <- frequency string, odd number]) <= 1
