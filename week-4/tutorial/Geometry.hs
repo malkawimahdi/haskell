@@ -64,9 +64,9 @@ oneStep East = Point 1 0
 oneStep South = Point 0 (-1)
 oneStep West = Point (-1) 0
 
-constantPoints :: [Point]
-constantPoints = [origin, Point 1 0, Point 2 0, Point 0 (-1),
- Point 1 (-1), Point 2 (-1), Point 0 (-2), Point 1 (-2), Point 2 (-2)]
+-- constantPoints :: [Point]
+-- constantPoints = [origin, Point 1 0, Point 2 0, Point 0 (-1),
+--  Point 1 (-1), Point 2 (-1), Point 0 (-2), Point 1 (-2), Point 2 (-2)]
 
--- readGrid :: String -> [(Point, Char)]
--- readGrid string = [ (point, char) |
+readGrid :: String -> [(Point,Char)]
+readGrid string = concat [ [ (Point x (y * (-1)), n) | (n,x) <- zip ns [0..] ] | (ns,y) <- zip (lines string) [0..] ]
