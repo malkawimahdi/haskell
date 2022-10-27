@@ -72,5 +72,8 @@ frequency chars = [(head grouping, length grouping) | grouping <- group(sort cha
 --     | otherwise = True
 --         where temp = [char | (char, number) <- frequency string, odd number]
 
+-- palindromic takes a list of char and outputs a bool representing if the string was a palindrome,
+    -- in any possible combination. If there are 0 or 1 odd characters, then it is True, otherwise False.
 palindromic :: [Char] -> Bool
 palindromic string =  length ([char | (char, number) <- frequency string, odd number]) <= 1
+
