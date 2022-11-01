@@ -1,4 +1,4 @@
-module Week4 where
+module Lecture4 where
 
 -- LISTS AND INFINITE LISTS --
 
