@@ -2,7 +2,13 @@ module ListUtilities where
 
 import  Data.List
 
-foo :: [a] -> [([a], [a])]
-foo xs = zip (inits xs) (tails xs)
-bar :: [a] -> [[a]]
-bar xs = [ys | ts <- tails xs, ys <- inits ts, not (null ys)]
+-- listPowerset, takes a list as input and outputs all the possible combinations of the list,
+    -- including the empty list.
+-- powerset of a list.
+listPowerset :: [a] -> [([a], [a])]
+listPowerset list = zip (inits list) (tails list)
+
+-- sublists, takes a list as input and outputs all the possible combinations of the list,
+    -- NOT including the empty list.
+sublists :: [a] -> [[a]]
+sublists list = [sublist | tail <- tails list, sublist <- inits tail, not (null sublist)]
