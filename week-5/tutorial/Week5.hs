@@ -78,7 +78,7 @@ collatzSteps number = length $ takeWhile (\number -> number /= 1) $ iterate coll
 collatzMax :: Int -> Int
 collatzMax number = maximum $ takeWhile (\number -> number /= 1) $ iterate collatz number
 
--- pascal, takes no input and outputs a list of list containing Integers. 
+-- pascal, takes no input and outputs a list of list containing Integers.
 pascal :: [[Integer]]
 pascal = iterate pascalOnce [1]
 

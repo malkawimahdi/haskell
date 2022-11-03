@@ -51,3 +51,6 @@ genCommand n
 -- generate an infinite list of commands, for testing
 genCommands :: Int -> [Command]
 genCommands seed = map genCommand (generate seed)
+
+-- How many steps does the turtle need to reach 400?
+-- length $ takeWhile (< 400) $  map normPoint $ map location $ scanl action startTurtle $ genCommands 37
