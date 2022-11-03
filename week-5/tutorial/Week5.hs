@@ -82,9 +82,11 @@ collatzMax number = maximum $ takeWhile (\number -> number /= 1) $ iterate colla
 pascal :: [[Integer]]
 pascal = iterate pascalOnce [1]
 
+-- pascalOnce, takes a list of Integers, and outputs a list of Integers.
+-- pascalOnce, calculates the next row for the pascal triangle from the list of Integers. 
 pascalOnce :: [Integer] -> [Integer]
 pascalOnce nums = zipWith (+) ([0] ++ nums) (nums ++ [0])
 
-
+-- showPascal, takes no input and calls pascal 10 times and outputs the pascal triangle in console.
 showPascal :: IO ()
 showPascal = putStr $ unlines $ map unwords $ map (map show) $ take 10 pascal
