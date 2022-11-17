@@ -18,11 +18,15 @@ import Search (bfs)
 unique :: Ord a => [a] -> [a]
 unique list = Set.elems $ Set.fromList list 
 
---frequencyMap takes a list as input, with the constraint that the list is ordered, and outputs a map, with th number of occurances,
+-- frequencyMap takes a list as input, with the constraint that the list is ordered, and outputs a map, with th number of occurances,
     -- of each element within the input list.
 frequencyMap :: Ord a => [a] -> Map a Int
 frequencyMap list = Map.fromListWith (+) [(character, 1) | character <- list]  
 
+-- furtherest takes a Maze as input and outputs a set of points, that are most distant from the start point.
 furtherest :: Maze -> Set Point
 furtherest  (points, start, end) = last $ bfs (moves points) start
 
+-- nearer takes a Maze as input and outputs the set of poitns that are nearer to the start point than the goal is. 
+nearer :: Maze -> Set Point
+nearer (points, start, end) = Set.unions $ init $ bfs (moves points) start
