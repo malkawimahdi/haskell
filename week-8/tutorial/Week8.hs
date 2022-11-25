@@ -25,4 +25,5 @@ removeFirstDigit [] = []
 -- continue from removeFirst
 removeFirst :: (a -> Bool) -> [a] -> [a]
 removeFirst f [] = []
-removeFirst f (x:xs) = undefined
+removeFirst f (x:[]) = f x
+removeFirst f (x:xs) = x : removeFirst f xs
