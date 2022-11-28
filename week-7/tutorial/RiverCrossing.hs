@@ -29,7 +29,12 @@ safe :: State -> Bool
 safe (State farmer wolf goat cabbage) = (goat == farmer) || (goat == True)
 
 crossings :: State -> Set State
-crossings (State farmer wolf goat cabbage) = undefined
+crossings (State farmer wolf goat cabbage) = 
+    Set.fromList $ filter safe $
+        [State (cross farmer) wolf goat cabbage] ++
+        [State (cross farmer) (cross wolf) goat cabbage | wolf == farmer] ++
+        [State (cross farmer) wolf (cross goat) cabbage | goat == farmer] ++
+        [State (cross farmer) wolf goat (cross cabbage) | cabbage == farmer]
 
--- cross :: State -> Bool
--- cross :: = not
+cross :: Bank -> Bank
+cross = not
