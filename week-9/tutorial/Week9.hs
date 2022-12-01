@@ -102,3 +102,9 @@ testElement = Element "p" [] [
 -- printWholeElements formats the attributes properly and outputting the final parsed HTML String in terminal.
 printWholeElements :: Element -> IO()
 printWholeElements elements = putStrLn $ printElement elements
+
+-- New Data Type, which contains the Letter either L to indicate Left, or R to indicate Right.
+-- data Step = L | R
+--     deriving (Show)
+
+
