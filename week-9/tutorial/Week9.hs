@@ -61,16 +61,20 @@ mapLTree :: (a -> b) -> LTree a -> LTree b
 mapLTree f (Leaf number) = Leaf (f number)
 mapLTree f (Branch left right) = Branch (mapLTree f left) (mapLTree f right)
 
+-- redefinedLTreeNumberOfLeafs takes any LTree and outputs the number of leafs, using function composition,
+    -- of the functions defined above.
 redefinedLTreeNumberOfLeafs :: LTree a -> Int
 redefinedLTreeNumberOfLeafs lTree = sumLTree (mapLTree f lTree)
     where
         f a = const 1 a
 
+-- new Data Type for parsing XML.
 data Element = Element Name [Attribute] [Content]
 type Name = String
 type Attribute = (Name, String)
 data Content = Text String | Child Element
 
+-- printElement, takes an Element as defined above and ouputs HTML, using the helper functions below.
 printElement :: Element -> String
 printElement (Element name attributes contents)
     | null contents = "<" ++ name ++ attributesString ++ "<" ++ name ++ "/>"
@@ -78,16 +82,23 @@ printElement (Element name attributes contents)
         where
             attributesString = concat (map printAttribute attributes)
 
+-- printElement HELPER printAttribute, takes as input Attribute, and outputs the HTML String of Attribute.
 printAttribute :: Attribute -> String
 printAttribute (name, string) = " "++ name ++ "=" ++ show string ++ "/>"
 
+-- printElement HELPER printContent, takes as input Content, and outputs the HTML String of Content.
 printContent :: Content -> String
 printContent (Text string) = string
 printContent (Child element) = printElement element
 
+-- testElement is a test case, containing XML structure.
 testElement :: Element
 testElement = Element "p" [] [
     Child (Element "img" [("src", "warning.png")] []),
     Text " A paragraph with ",
     Child (Element "em" [] [Text "emphasis"]),
     Text "."]
+
+-- printWholeElements formats the attributes properly and outputting the final parsed HTML String in terminal.
+printWholeElements :: Element -> IO()
+printWholeElements elements = putStrLn $ printElement elements
