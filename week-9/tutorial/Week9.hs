@@ -1,3 +1,5 @@
+{-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}
+{-# HLINT ignore "Use concatMap" #-}
 module Week9 where
 
 -- data definition, where an LTree, can either be a Leaf or a Branch that connects to other LTree's.
@@ -62,5 +64,30 @@ mapLTree f (Branch left right) = Branch (mapLTree f left) (mapLTree f right)
 redefinedLTreeNumberOfLeafs :: LTree a -> Int
 redefinedLTreeNumberOfLeafs lTree = sumLTree (mapLTree f lTree)
     where
-        f = const 1
--- redefinedLTreeNumberOfLeafs f lTree = f (const sumLTree . mapLTree (+) lTree)
+        f a = const 1 a
+
+data Element = Element Name [Attribute] [Content]
+type Name = String
+type Attribute = (Name, String)
+data Content = Text String | Child Element
+
+printElement :: Element -> String
+printElement (Element name attributes contents)
+    | null contents = "<" ++ name ++ attributesString ++ "<" ++ name ++ "/>"
+    | otherwise = "<" ++ name ++ ">" ++ attributesString ++ concat (map printContent contents) ++ "</" ++ name ++ ">"
+        where
+            attributesString = concat (map printAttribute attributes)
+
+printAttribute :: Attribute -> String
+printAttribute (name, string) = " "++ name ++ "=" ++ show string ++ "/>"
+
+printContent :: Content -> String
+printContent (Text string) = string
+printContent (Child element) = printElement element
+
+testElement :: Element
+testElement = Element "p" [] [
+    Child (Element "img" [("src", "warning.png")] []),
+    Text " A paragraph with ",
+    Child (Element "em" [] [Text "emphasis"]),
+    Text "."]
