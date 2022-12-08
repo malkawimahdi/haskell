@@ -39,6 +39,7 @@ instance Functor Parser where
 
 instance Applicative Parser where
     pure x = P $ \ s -> [(x, s)]
+    (<*>) :: Parser (a -> b) -> Parser a -> Parser b
     pf <*> px =
         P $ \ s ->
             [(f x, u) | (f, t) <- parsePrefix pf s, (x, u) <- parsePrefix px t]
