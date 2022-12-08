@@ -23,7 +23,7 @@ type Reg = Char
 -- parse a string containing several instructions
 -- (misparses are silently discarded)
 parseCode :: String -> Code
-parseCode = concat . map (parseAll instruction) . lines
+parseCode = concatMap (parseAll instruction) . lines
 
 instruction :: Parser Instruction
 instruction =
