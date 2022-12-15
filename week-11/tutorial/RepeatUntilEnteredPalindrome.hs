@@ -6,10 +6,14 @@ palindromeCheck string
     | otherwise = False
 
 main :: IO()
-main = do
+main = palindrome 1
+
+palindrome :: Int -> IO()
+palindrome attempts = do
+
         putStrLn "Please Enter a String to Check if it is a Palindrome:"
         response <- getLine
         if response == reverse response then
-                putStrLn "Is Palindrome"
+                putStrLn $ "Is Palindrome " ++ show attempts
         else
-            main
+            palindrome (attempts + 1)
