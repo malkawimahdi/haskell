@@ -1,0 +1,5 @@
+[(Order "j" "ball" 10), (Order "a" "ball" 5), (Order "k" "pc" 52), (Order "h" "pc" 1), (Order "q" "hat" 3)]
+
+[(Order "j" "ball" 10), (Order "k" "pc" 10), (Order "a" "pc" 10)] [(Delivery "ball" 15), (Delivery "pc" 10)]
+
+[(Order "j" "ball" 10), (Order "k" "pc" 5)] 
